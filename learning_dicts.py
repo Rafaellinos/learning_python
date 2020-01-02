@@ -42,4 +42,12 @@ print(dict2.pop(123)) #remove the item and returns his value
 
 print(dict4)
 dict4.update({'name': 'Rafael'}) #update an item
+dict4.update({'age': 23})
 print(dict4)
+
+for key, value in dict4.items(): 
+    # dict.items() is a list of tuples with key and value
+    print(f"{key}:{value}")
+
+for item in dict4.items():
+    print(str(item))

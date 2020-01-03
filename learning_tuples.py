@@ -1,6 +1,7 @@
 """
     Tuples are immutables, so you can't update, sort, add item etc
     Usually more faster than lists.
+    Tuple only has two methods: count and index, but it works with len
 """
 tuple2 = (1,2,3,4)
 print(3 in tuple2)

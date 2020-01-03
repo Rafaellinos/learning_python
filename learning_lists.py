@@ -43,3 +43,16 @@ list_unpacking = ['a','b','c','d','e','f']
 a, b, c, *other, f = list_unpacking # *other unpack the rest of the items
 print(type(other))
 print(f"{a},{b},{c} and {other}, {f}")
+
+#remove duplicates
+list2 = [1,2,3,4,5,5]
+list3 = []
+for item in list2:
+    if not item in list3:
+        list3.append(item)
+print(list2)
+print(list3)
+# OR can use set
+print(set(list2))
+list4 = list(set(list2))
+print(list4)

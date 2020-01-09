@@ -24,10 +24,16 @@ for item in users.values():
 for key, value in users.items():
     print(key, value) #used to get both key and value
 
-my_list = [1,2,3,4,5]
-num = 0
-total = 0
-for i in my_list:
-    num +=1
-    total += i
-print(str(num)+'\n'+str(total))
+for _ in range(0, 10, 2):
+    # first, the starting point, second the ending point
+    # third jumps, default is 1. On this case is jumping 2
+    print(_)
+
+for i in range(2):
+    print(list(range(10)))
+    #output is 2 lists with 0 to 9.
+
+for i, char in enumerate('HEllooooooooooo'):
+    # returns a index(i) and the element on the iterable object
+    print(f"{i}:{char},,",end="")
+print("")

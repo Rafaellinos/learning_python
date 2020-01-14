@@ -9,11 +9,13 @@ cat2 = Cat('Miau',5)
 cat3 = Cat('Jean', 1)
 
 def get_oldest_cat(*args):
-    oldest = 0
-    for cat in args:
-        if cat.age > oldest:
-            oldest = cat.age
-    return oldest
+    cat_old = args[0]
+    for i,cat in enumerate(args):
+        if cat.age > cat_old.age:
+            cat_old = args[i]
 
-print(f"the oldest cat is {get_oldest_cat(cat1,cat2,cat3)} years old")
+    return cat_old.age, cat_old.name
+
+old_age, old_name = get_oldest_cat(cat1,cat2,cat3)
+print(f"the oldest cat name is {old_name} and has {old_age} years old")
 

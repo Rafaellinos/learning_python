@@ -17,3 +17,4 @@ print(len(superlist1))
 
 print(isinstance(superlist1, list))
 print(issubclass(SuperList, list))
+print(issubclass(SuperList, object))

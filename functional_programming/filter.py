@@ -1,5 +1,5 @@
 """
-    filter({function}, {iterable})
+    params: filter({function}, {iterable})
     return: filter object (iterable)
 
     If the function returns true, add the item on iterable in a filter obj
@@ -14,7 +14,7 @@ def only_odd(item):
     # returns true if odd and false if even
     return item % 2 != 0
 
-print(list(filter(only_odd, my_list)))
+print(list(filter(only_odd, my_list))) # [1, 3]
 
 alphabets = ['a','b','c','e','i']
 
@@ -26,4 +26,4 @@ def filter_vowels(alphabet):
 
 filtered_voewls = filter(filter_vowels, alphabets) # add only the item that the function return True
 print(filtered_voewls)
-print(list(filtered_voewls))
+print(list(filtered_voewls)) # ['a', 'e', 'i']

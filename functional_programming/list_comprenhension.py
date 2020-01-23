@@ -1,3 +1,7 @@
+"""
+[expression, loop with iterable, option to add a condicional]
+"""
+
 my_list = []
 
 for char in 'hello':

@@ -1,7 +1,9 @@
 import imaplib, email
 
-user = '****'
-pwd = '****'
+with open("mail_inform.txt", "r") as f:
+    user = f.readline() # get your email information
+    pwd = f.readline()
+
 imap_url = 'imap.gmail.com'
 
 conn = imaplib.IMAP4_SSL(imap_url)
@@ -28,6 +30,8 @@ email_message = email.message_from_string(raw_email)
 
 print(dir(email_message))
 print(email_message['Subject'])
+print(email_message['To'])
+print(email_message['From'])
 
 
 

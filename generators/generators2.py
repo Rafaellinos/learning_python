@@ -1,6 +1,3 @@
-"""
-
-"""
 # how for loops works
 def special_for(itarable):
     iterator = iter(itarable) # makes a list an iterator obj

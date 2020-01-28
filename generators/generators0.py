@@ -22,6 +22,7 @@ print(my_list)
 def generator_func(num):
     for i in range(num):
         yield i # pauses the func
+        #when the function has yield, is that number that the generator will return
 
 for i in generator_func(1000):
     print(i) # out 0,1,2..999

@@ -18,7 +18,7 @@ except Exception as err:
 
 
 
-random_number = random.randint(int(n1), int(n2))
+random_number = random.randint(n1, n2)
 print(random_number)
 while 1:
     try:

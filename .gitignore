@@ -11,6 +11,7 @@ api_key.txt
 *.sln.docstates
 
 mail_inform.txt
+auth_keys.txt
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

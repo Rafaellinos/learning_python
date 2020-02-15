@@ -1,4 +1,6 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, redirect
+import csv
+
 
 app = Flask(__name__) # name of main file __name__ == __main__
 """
@@ -21,8 +23,24 @@ def html_page(page_name):
         return f"page not found {err}"
 
 @app.route('/submit_form', methods=['POST','GET'])
-def submit_form():
-    return 'form submitted hooray'
+def submit_form(**kw):
+    # request.args.get is used to get the query param
+    if request.method == 'POST':
+        # can use request.form.to_dict()
+        email = request.form.get("email")
+        subject = request.form.get("subject")
+        message = request.form.get("message")
+        print(f'{email}, {subject}, {message}')
+
+        # with open('database.csv', 'a') as f:
+        #     f.write(f"\nEmail: {email} | Subject: {subject} | Message: {message}")
+        with open('database.csv', 'a', newline='') as f:
+            csv_writter = csv.writer(f, delimiter=',')
+            csv_writter.writerow([email,subject, message])
+
+        return redirect("thankyou")
+    else:
+        return "Something went wrong, try again!"
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -13,6 +13,8 @@ api_key.txt
 mail_inform.txt
 auth_keys.txt
 
+data.csv
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

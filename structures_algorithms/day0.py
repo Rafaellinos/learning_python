@@ -20,7 +20,6 @@ def random_list(lista: list) -> list:
         random_letter = "".join([choice(list_alphabet) for _ in range(6)])
         if random_letter not in random_letters:
             random_letters.append(random_letter)
-        random_letter = ""
     lista.extend(random_letters)
     shuffle(lista)
     print(lista)
@@ -32,6 +31,7 @@ def find_nemo(lista: list):
     for i in lista:
         if i == 'nemo':
             print(f"found nemo at {lista.index(i)} position")
+            break # including break here is good because we dont need to keep looping after we found what we need.
 
 
 def get_first(lista: list):

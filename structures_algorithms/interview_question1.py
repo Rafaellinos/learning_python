@@ -26,9 +26,16 @@ def check_sum(array):
                 return True
     return False
 
+def check_sum1(array):
+    sorted(array)
+    low = 0
+    higher = len(array)-1
+    while (low < higher):
+        s = array[low] + array[higher]
+        if s == sum:
+            return True
+        higher -= 1
+    return False
 
 
-
-
-
-print(check_sum([3, 3, 4, 7]))
+print(check_sum1([1, 3, 3, 7]))

@@ -1,7 +1,7 @@
 from time import time
 from random import choice, shuffle
 
-
+# O(1) -> contant time
 def performance(func):
     def wrap_func(*args, **kw):
         t1 = time()

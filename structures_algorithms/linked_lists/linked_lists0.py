@@ -40,60 +40,99 @@ insert: O(n) -> add item anywhere between head and tail
 delete: O(n) -> delete an item
 """
 
+
 # Example: 10 --> 5 --> 16
+
+class Node(object):
+
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
 
 class LinkedList(object):
 
     def __init__(self, value):
-        self.head = {
-            'value': value,
-            'next': None
-        }
+        node = Node(value)
+        # instead of doing dict, its better to create
+        # an node obj
+        # self.head = {
+        #     'value': value,
+        #     'next': None
+        # }
+        self.head = node
         self.tail = self.head
         self.length = 1
 
     def append(self, value):
-        """
-            We create a new obj, update the next in the tail to point
-            to that obj, updates the head aswell, because they are
-            pointing to the same obj. For last, update the tail to be
-            the new node.
-        """
-        # create a new node obj
-        new_node = {
-            'value': value,
-            'next': None
-        }
-        # update the current tail to point to the next obj
-        self.tail.update({
-            'next': new_node})
-        # update the tail to be the item that we created
+        new_node = Node(value)
+        # create new node obj
+        self.tail.next = new_node
+        # add the tail the new node
         self.tail = new_node
-        # obj: next and the tail are the same obj
+        # update the tail to be the last item
         self.length += 1
-
         return self
 
     def prepand(self, value):
-        new_node = {
-            'value': value,
-            'next': self.head
-        }
+        new_node = Node(value)
+        # create new node obj
+        new_node.next = self.head
+        # add next obj as the head (first node)
         self.head = new_node
+        # make the new_node as the head
+        self.length += 1
+        return self
+
+    def insert(self, index, value):
+        if index > self.length or index < 0:
+            raise Exception("Invalid index")
+        elif index == 0:
+            self.prepand(value)
+            return self
+        elif index == self.length:
+            self.append(value)
+            return self
+
+        new_node = Node(value)
+        obj = self.head
+        obj_current = obj
+        i = 0
+        while i <= self.length:
+            if i == index:
+                obj_current.next = new_node
+                new_node.next = obj
+                break
+            obj_current = obj
+            obj = obj.next
+            i += 1
+
         self.length += 1
         return self
 
     def __str__(self):
-        return str(self.__dict__)
+        obj = self.head
+        string = str()
+        for _ in range(my_ll.length):
+            string += str(obj.value)+"->"
+            obj = obj.next
+        string += "Null"
+        return string
+
 
 my_ll = LinkedList(10)
-print(my_ll)
+# 10 -> null
 my_ll.append(5)
+# 10 -> 5 -> null
 my_ll.append(16)
-print(my_ll)
-# value: 10, next: {value 5, next: {value 16, next: None}}}
-# 10 -> 5 -> 16
-# 1 -> 10 -> 5 -> 16
+# 10 -> 5 -> 16 -> null
 my_ll.prepand(1)
+# 1 -> 10 -> 5 -> 16 -> null
 print(my_ll)
-# value: 1, next: {value: 10, next: {value 5, next: {value 16, next: None}}}}
+# 1 -> 10 -> 99 -> 5 -> 16 -> null
+print(my_ll.length)
+my_ll.insert(2, 99)
+print(my_ll.length)
+print(my_ll)
+
+

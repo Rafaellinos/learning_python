@@ -74,7 +74,7 @@ class LinkedList(object):
         self.length += 1
         return self
 
-    def prepand(self, value):
+    def prepend(self, value):
         new_node = Node(value)
         # create new node obj
         new_node.next = self.head
@@ -84,30 +84,53 @@ class LinkedList(object):
         self.length += 1
         return self
 
-    def insert(self, index, value):
+    def _traverse(self, index):
+        node = self.head
+        if index <= 0:
+            node
+        i = 0
+        while i <= self.length:
+            if i == index:
+                return node
+            node = node.next
+            i += 1
+        return node
+
+    def _check_index(self, index):
         if index > self.length or index < 0:
             raise Exception("Invalid index")
-        elif index == 0:
-            self.prepand(value)
+        return True
+
+    def insert(self, index, value):
+        self._check_index(index)
+        if index == 0:
+            self.prepend(value)
             return self
         elif index == self.length:
             self.append(value)
             return self
 
         new_node = Node(value)
-        obj = self.head
-        obj_current = obj
-        i = 0
-        while i <= self.length:
-            if i == index:
-                obj_current.next = new_node
-                new_node.next = obj
-                break
-            obj_current = obj
-            obj = obj.next
-            i += 1
 
+        previous_node = self._traverse(index - 1)
+        next_node = previous_node.next
+        previous_node.next = new_node
+        new_node.next = next_node
         self.length += 1
+        return self
+
+    def remove(self, index):
+        self._check_index(index)
+
+        if index <= 0:
+            self.head = self.head.next
+            self.length -= 1
+            return self
+        previous_node = self._traverse(index - 1)
+        del_node = previous_node.next
+        previous_node.next = del_node.next
+        self.length -= 1
+
         return self
 
     def __str__(self):
@@ -126,13 +149,11 @@ my_ll.append(5)
 # 10 -> 5 -> null
 my_ll.append(16)
 # 10 -> 5 -> 16 -> null
-my_ll.prepand(1)
+my_ll.prepend(1)
 # 1 -> 10 -> 5 -> 16 -> null
 print(my_ll)
 # 1 -> 10 -> 99 -> 5 -> 16 -> null
 print(my_ll.length)
-my_ll.insert(2, 99)
+print(my_ll.insert(2, 99))
 print(my_ll.length)
-print(my_ll)
-
-
+print(my_ll.remove(2))

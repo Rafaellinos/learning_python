@@ -87,7 +87,7 @@ class LinkedList(object):
     def _traverse(self, index):
         node = self.head
         if index <= 0:
-            node
+            return node
         i = 0
         while i <= self.length:
             if i == index:
@@ -133,6 +133,35 @@ class LinkedList(object):
 
         return self
 
+    def reverse_list(self):
+        # if self.length == 1:
+        #     return self
+        # current = self.tail
+        # last_node = self.tail
+        # i = self.length - 2
+        # while i >= 0:
+        #     node = self._traverse(i)
+        #     current.next = node
+        #     current = node
+        #     i -= 1
+        #
+        # self.tail = current
+        # self.head = last_node
+        # self.tail.next = None
+
+        first = self.head
+        self.tail = self.head
+        second = first.next
+        while second:
+            tmp = second.next
+            second.next = first
+            first = second
+            second = tmp
+
+        self.head.next = None
+        self.head = first
+        return self
+
     def __str__(self):
         obj = self.head
         string = str()
@@ -155,5 +184,7 @@ print(my_ll)
 # 1 -> 10 -> 99 -> 5 -> 16 -> null
 print(my_ll.length)
 print(my_ll.insert(2, 99))
-print(my_ll.length)
-print(my_ll.remove(2))
+print(my_ll.length) # 5
+print(my_ll.remove(2)) # 1 -> 10 -> 5 -> 16 -> null
+print(my_ll.reverse_list()) # 16 -> 5 -> 10 -> 1 -> null
+

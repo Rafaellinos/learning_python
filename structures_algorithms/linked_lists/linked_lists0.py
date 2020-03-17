@@ -165,7 +165,7 @@ class LinkedList(object):
     def __str__(self):
         obj = self.head
         string = str()
-        for _ in range(my_ll.length):
+        for _ in range(self.length):
             string += str(obj.value)+"->"
             obj = obj.next
         string += "Null"

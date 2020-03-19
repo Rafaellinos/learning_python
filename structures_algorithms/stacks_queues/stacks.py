@@ -75,6 +75,8 @@ class Stack:
             return
         next_node = self.top.next
         self.top = next_node
+        if self.length == 1:
+            self.bottom = None
         self.length -= 1
         return self
 
@@ -100,4 +102,6 @@ my_stack.push('discord')
 print(my_stack)
 print(my_stack.pop())
 print(my_stack.pop())
+print(my_stack.pop())
+print(my_stack.bottom)
 print(my_stack.pop())

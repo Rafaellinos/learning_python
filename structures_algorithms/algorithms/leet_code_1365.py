@@ -27,6 +27,7 @@ Input: nums = [7,7,7,7]
 Output: [0,0,0,0]
 """
 
+
 class Solution:
     @classmethod
     def smallerNumbersThanCurrent(self, nums):
@@ -37,5 +38,17 @@ class Solution:
                     difference[i] += 1
         return difference
 
-print(Solution.smallerNumbersThanCurrent([7,7,7,7]))
+    # best answer
+    @classmethod
+    def smallerNumbersThanCurrent1(self, nums):
+        result = []
+        tempNums = nums[:]
+        nums.sort()
+        for n in tempNums:
+            result.append(nums.index(n))
+        return result
 
+
+
+
+print(Solution.smallerNumbersThanCurrent1([8,1,2,2,3]))

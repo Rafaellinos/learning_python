@@ -3,6 +3,12 @@ from bs4 import BeautifulSoup
 from plyer import notification
 import time
 
+"""
+pip3 install requests
+pip3 install beautifulsoup4
+pip3 install plyer
+"""
+
 res = requests.get('https://www.worldometers.info/coronavirus/').text
 soup = BeautifulSoup(res, 'html.parser')
 soup.encode('utf-8')

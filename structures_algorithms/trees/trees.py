@@ -85,14 +85,36 @@ class BinarySearchTree:
                     elif current.value > parent.value:
                         parent.right = current.left
                         break
-                
+                elif not current.right.left:
+                    current.right.left = current.left
+                    if not parent:
+                        self.root = current.right
+                    else:
+                        if current.value < parent.value:
+                            parent.left = current.right
+                        elif current.value > parent.value:
+                            parent.right = current.right
+                else:
+                    leftmost = current.right.left
+                    leftmost_parent = current.right
+                    while not leftmost_parent:
+                        leftmost_parent = leftmost
+                        leftmost = leftmost.left
                     
-            else:
-                return False
+                    leftmost_parent.left = leftmost.right
+                    leftmost.left = current.left
+                    leftmost.right = current.right
+
+                    if not parent:
+                        self.root = leftmost
+                    else:
+                        if current.value < parent.value:
+                            parent.left = leftmost
+                        elif current.value > parent.value:
+                            parent.right = leftmost
+            return True
 
         
-        
-
 """
        9
     4     20

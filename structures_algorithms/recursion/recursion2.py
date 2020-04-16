@@ -11,7 +11,7 @@ if n == 8
 """
 
 
-def fibonachi(n):
+def fibonachi(n): # O(n)
     lista = [0,1]
     i = n
     while i > 0:
@@ -19,7 +19,7 @@ def fibonachi(n):
         i -= 1
     return lista[n]
 
-def fibonachi1(n, n1=0, n2=1):
+def fibonachi1(n, n1=0, n2=1): # recursive O(2^n)
     if n == 0:
         return n1
     tmp = n2
@@ -28,7 +28,7 @@ def fibonachi1(n, n1=0, n2=1):
     n -= 1
     return fibonachi1(n,n1,n2)
 
-def fibonachi2(n):
+def fibonachi2(n): # recursive O(2^n)
     if n < 2:
         return n
     return fibonachi2(n-1) + fibonachi2(n-2)

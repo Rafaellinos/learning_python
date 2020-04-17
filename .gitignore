@@ -10,6 +10,8 @@ api_key.txt
 *.userosscache
 *.sln.docstates
 
+.idea/
+
 mail_inform.txt
 auth_keys.txt
 

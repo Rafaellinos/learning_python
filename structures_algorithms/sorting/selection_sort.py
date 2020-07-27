@@ -1,16 +1,14 @@
 
 def selection_sort(arr):
-    new_array = []
-    next_index = 0
-    n = len(arr)
-    for x in range(n):
-        for i in range(0, n-x-1):
-            if arr[x] > arr[i+x]:
-                arr[x] = arr[i+x]
+    lenth = len(arr)
+    for i in range(lenth):
+        menor = arr[i]
+        for j in range(i,lenth):
+            if  arr[j] < menor:
+                menor = arr[j]
+        arr.remove(menor)
+        arr.insert(i, menor)
     return arr
-
-
-
 
 lista = [8,3,1,5,4,6,9,2,7]
 

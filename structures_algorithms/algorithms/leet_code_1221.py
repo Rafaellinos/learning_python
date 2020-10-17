@@ -5,21 +5,18 @@ Given a balanced string s split it in the maximum amount of balanced strings.
 Return the maximum amount of splitted balanced strings.
 """
 
+
 def balance_string(string):
     pairs = 0
-    balance_check = ''
-    for i, ele in enumerate(string):
-        if balance_check == 'R' and string[i] == 'L':
+    ls = 0
+    for el in string[::-1]:
+        if el == 'L':
+            ls += 1
+        elif el == 'R':
+            ls -= 1
+        if ls == 0:
             pairs += 1
-            balance_check = ''
-        elif balance_check == 'L' and string[i] == 'R':
-            pairs += 1
-            balance_check = ''
-        elif balance_check == 'R' and string[i] == 'R':
-            balance_check = ''
-        
-        
-    pass
+    return pairs
 
 
-s = 'RLRRLLRLRL'
+print(balance_string(string='RLLLLRRRLR'))

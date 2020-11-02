@@ -10,6 +10,7 @@ api_key.txt
 *.userosscache
 *.sln.docstates
 
+django-env/*
 .idea/
 .vscode/*
 mail_inform.txt

@@ -166,7 +166,7 @@ class LinkedList(object):
         obj = self.head
         string = str()
         for _ in range(self.length):
-            string += str(obj.value)+"->"
+            string += str(obj.value) + "->"
             obj = obj.next
         string += "Null"
         return string
@@ -184,7 +184,6 @@ print(my_ll)
 # 1 -> 10 -> 99 -> 5 -> 16 -> null
 print(my_ll.length)
 print(my_ll.insert(2, 99))
-print(my_ll.length) # 5
-print(my_ll.remove(2)) # 1 -> 10 -> 5 -> 16 -> null
-print(my_ll.reverse_list()) # 16 -> 5 -> 10 -> 1 -> null
-
+print(my_ll.length)  # 5
+print(my_ll.remove(2))  # 1 -> 10 -> 5 -> 16 -> null
+print(my_ll.reverse_list())  # 16 -> 5 -> 10 -> 1 -> null

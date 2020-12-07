@@ -1,21 +1,41 @@
-"""
-    Instância que compartilhem o mesmo estado.
-"""
-
-class Borg:
-    __shared_state = {"1":"2"}
+class CEO:
+    __shared_state = {
+        'name': 'Steve',
+        'age': 55,
+    }
 
     def __init__(self):
-        self.x = 1
         self.__dict__ = self.__shared_state
-        pass
 
-b = Borg()
-b1 = Borg()
+    def __repr__(self):
+        return f"{self.name} is {self.age} years old"
 
-b.x = 4
 
-print("Borg Object 'b':", b)  # b e b1 são objetos distintos
-print("Borg Object 'b1':", b1)
-print("Object State 'b':", b.__dict__)
-print("Object state 'b1':", b1.__dict__)  # b e b1 compartilham o mesmo estado
+class Monostate:  # serve para ser herdado e garantir que compartilhem o mesmo atributo, mas nao são o mesmo objeto
+    _shared_state = {}
+
+    def __new__(cls, *args, **kwargs):
+        obj = super().__new__(cls, *args, **kwargs)
+        obj.__dict__ = cls._shared_state
+        return obj
+
+
+class CFO(Monostate):
+
+    def __init__(self):
+        self.name = ''
+        self.money_managed = 0
+
+    def __str__(self):
+        return f"{self.name} manages ${self.money_managed}"
+
+
+if __name__ == '__main__':
+    ceo1 = CEO()
+    print(ceo1)
+
+    ceo2 = CEO()
+    ceo2.age = 77  # mudou os dois pois compartilham o state
+    print(ceo1)
+    print(ceo2)
+    print(ceo1 == ceo2)

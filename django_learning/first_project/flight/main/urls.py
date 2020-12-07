@@ -19,4 +19,5 @@ from main import views
 
 urlpatterns = [
     path("", views.homepage),
+    path("<int:id>", views.flight),
 ]

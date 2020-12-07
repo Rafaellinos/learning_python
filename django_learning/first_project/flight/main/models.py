@@ -12,8 +12,11 @@ class Airport(models.Model):
         max_length=64,
     )
 
-    def __repr__(self):
-        return f"Code: {self.code or 'not set'}, City: {self.city or 'not set'}"
+    # def __repr__(self):
+    #     return f"Code: {self.code or 'not set'}, City: {self.city or 'not set'}"
+
+    def __str__(self):
+        return f"Airport: Code: {self.code}, City: {self.city}"
 
 
 class Flight(models.Model):

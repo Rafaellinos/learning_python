@@ -3,6 +3,8 @@ from urllib.parse import urljoin
 from aiohttp import ClientSession
 from requests import get
 
+
+
 base_url = 'https://pokeapi.co/api/v2/'
 pokemons = get(urljoin(base_url, 'pokemon/?limit=10')).json()['results']
 

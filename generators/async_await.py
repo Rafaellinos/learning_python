@@ -18,6 +18,23 @@ async def main() -> None:
     print(a, type(a))
     a.close()
     print(f"a is closed")
+
+    def classic_coroutine(received):
+        while True:
+            produced = yield received/
+            print("received?", produced)
+            received += 1
+        return received
+
+    t = classic_coroutine(10)
+    print(t, type(t))
+    t.send(None)
+    b = t.send(12.5)
+    print(b)
+    b = t.send(13.5)
+    print(b)
+
+
 if __name__ == '__main__':
     asyncio.run(main())
 

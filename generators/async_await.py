@@ -21,7 +21,7 @@ async def main() -> None:
 
     def classic_coroutine(received):
         while True:
-            produced = yield received/
+            produced = yield received
             print("received?", produced)
             received += 1
         return received
@@ -40,3 +40,23 @@ if __name__ == '__main__':
 
 # await keyword avoids block because it suspends the current coroutine object
 # await keyword WORKS WITH AWAITABLES
+
+# Todo async coroutine precisa rodar dentro de um event-loop.
+# Event loop é o core de todas aplicações asyncio, permite ter concorrencia em uma unica thread
+# basicamente esperando o OS notificar que determinada operacao foi concluida.
+# Isso é util para operações I/O bound (e.g. escrever no hd, esperar retorno na operacao).
+# Deleta a task para o SO e enquanto o SO n devolve a resposta, podemos partir pra outra.
+
+# https://www.pythontutorial.net/python-concurrency/python-event-loop/
+
+
+#    Use asyncio in order to adopt coroutines in your program.
+#    Use asyncio in order to use the asynchronous programming paradigm.
+#    Use asyncio in order to use non-blocking I/O.
+
+# https://superfastpython.com/python-asyncio/
+#A coroutine is a function that can be suspended and resumed.
+#  single-threaded event loop.
+
+# await executes the coroutine
+# await blocks the current thread
